@@ -1,0 +1,33 @@
+TODO:
+Remove the error response object from error response when in production mode
+
+Make the signin Token into it's own function to elimate Do not repeat yourself(DRY) in authController
+
+check for routes with authorization and remove it from postman. Routes that doesn't need authorisation
+
+Build a form for admin for adding tours to the website
+
+fix this error on the page: Unandle Rejection... Shutting down
+MongoTimeoutError Server selection timed out after 10000 ms
+[nodemon] app crashed - waiting for file changes before starting...
+
+API IMPLEMENTATION
+Implement restriction that users can only review a tour that they have actually booked
+
+implement nested booking routes: /tours/:id/bookings and users/:id/bookings;
+
+Imporve tour dates: add a participants and a soldOut field to each date. A date then becomes like an instance of the tour. Then, when a user books, they need to select one of the dates. A new booking will increase the number of participants in the date, until it is booked out (participants > maxGroupSize). So, when a user wants to book, you need to check if tour on the selected date is still available
+
+Implement advance authentication features: confirm user email, keep users logged in with refresh tokens, two-factor authentication, etc
+
+Implement a sign up form, similar to the login form;
+
+On the tour detail page, if a user has taken a tour, allow them add a review directly on the website.(only if the user has taken that tour, check if the current user has booked that tour and if that tour timestamp has passed) so then Implement a form for this
+
+Hide the enntire booking section on the tour detail page if current user has already booked the tour(also prevent duplicate bookings on the model)
+
+Implement "like tour" functionality, with favourte tour page;
+
+On the user account page, implement the "My Reviews" page, where all reviews are displayed, and a user can edit them. (if you know React, this will would be an amazing way to use the Natours API and train your skills)
+
+for administrators, Implement all the "Manage" Pages, where they CRUD (Create, read, update, delete) tours, users, reviews, and bookings

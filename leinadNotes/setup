@@ -1,0 +1,6 @@
+Setting up ESLINT AND PRETTIRE
+Download both extentions on the extention platform
+install the extentions as well on npm
+
+
+npm i eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-config-airbnb eslint-plugin-node eslint-plugin-import eslint-plugin-jsx-ally eslint-plugin-react --save-dev

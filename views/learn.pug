@@ -1,0 +1,15 @@
+//- Pug is a simple white space sensitive syntax for writing html syntax Now what that means is that all we use to write html elements is their name and indentation in our code.
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Natours #{tour} 
+        link(rel="stylesheet", href="css/style.css")
+        link(rel='shortcut icon' type='image/png' href='img/favicon.png')
+        //- these files triggers it's own http request by itself because of this middleware app.use(express.static(path.join(__dirname, 'public'))); by using this, we basically define that all the static assets will automatically be serve from a folder called public
+    body
+        h1= tour //this type of code is called a buffer code 
+        h1= tour.toUpperCase() //we can run simpl javascript with buffer code 
+        h1 THE GAME CHANGER
+        p Nothing more but HTML
