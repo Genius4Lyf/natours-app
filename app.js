@@ -59,6 +59,9 @@ app.use(express.static(path.join(__dirname, 'public'))); //This line tells your 
 // HELMET MIDDLEWARE
 // Set Security HTTP headers
 // app.use(helmet());
+const WS_HOST = process.env.WS_HOST || 'natours-app-d2rj.onrender.com';
+const WS_PORT = process.env.WS_PORT || '62816';
+
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -91,7 +94,7 @@ app.use(
         'ws://127.0.0.1:57061/',
         'ws://127.0.0.1:62209/', // <-- Add your dev WebSocket port
         'ws://127.0.0.1:*', // <-- Or use wildcard for all ports (dev only)
-        'wss://natours-app-d2rj.onrender.com:62816/',
+        `wss://${WS_HOST}:${WS_PORT}/`,
       ],
       upgradeInsecureRequests: [],
     },
