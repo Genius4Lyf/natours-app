@@ -25,7 +25,7 @@ const hpp = require('hpp');
 // Defineing the cookie parser
 const cookieParser = require('cookie-parser');
 
-const cors = require('cors');
+// const cors = require('cors');
 
 const compression = require('compression');
 
@@ -167,8 +167,8 @@ app.use(
 app.use(compression());
 
 //CORS MIDDLEWARE
-app.use(cors());
-app.options('*', cors());
+// app.use(cors());
+// app.options('*', cors());
 
 // CREATING OUR OWN MIDDLEWARE
 // When making our own middleware, we have to call in the next function parameter otherwise the program will stop running and once a response is sent back, that is if a middleware is between a route, it and that route is called upon, the middleware will not get run because a response has ended the program
