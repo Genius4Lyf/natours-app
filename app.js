@@ -27,6 +27,8 @@ const cookieParser = require('cookie-parser');
 
 const cors = require('cors');
 
+const compression = require('compression');
+
 // IMPORTING THE ERROR HANDLER APPERROR
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -161,6 +163,8 @@ app.use(
     ],
   }),
 );
+
+app.use(compression());
 
 //CORS MIDDLEWARE
 app.use(cors());
