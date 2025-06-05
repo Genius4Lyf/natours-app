@@ -16,7 +16,7 @@ const router = express.Router();
 
 router.get(
   '/',
-  bookingController.createBookingCheckout,
+  // bookingController.createBookingCheckout,
   authController.isLoggedIn,
   viewController.getOverview,
 ); //adding the booking controller for creating booking chekcout is temporary until the app will be deployed into a server then a good solution will be made for this

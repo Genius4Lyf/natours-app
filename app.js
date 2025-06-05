@@ -25,6 +25,8 @@ const hpp = require('hpp');
 // Defineing the cookie parser
 const cookieParser = require('cookie-parser');
 
+const cors = require('cors');
+
 // IMPORTING THE ERROR HANDLER APPERROR
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -35,6 +37,9 @@ const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
+
+// IMPORTING CONTROLLERS
+const bookingController = require('./controllers/bookingController');
 
 // Defining the app variable for us to be able to use express
 const app = express();
@@ -106,6 +111,13 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter); //this will affect all the routes withl '/api/
 
+// STRIPE WEBHOOTS ROUTE
+app.post(
+  '/webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  bookingController.webhookCheckout,
+); // the reason why we are putting the booking controller here is because The reason for that is that in this handler function, when we receive the body from Stripe, the Stripe function that we're then gonna use to actually read the body needs this body in a raw form, so basically as a string and not as JSON. Again, in this route here, we need the body coming with the request to be not in JSON, otherwise this is not going to be working at all. Now the thing is, that as soon as a request hits this middleware here, the body will be parsed and converted to JSON. It will then be put on request.body as a simple JSON object. Again with that, this route handler here would then not work. That's the whole reason why we need to put this route here before we call the express.raw. Now we still need to actually parse the body but in a so-called raw format.
+
 // JSON MIDDLEWARE FROM EXPRESS
 // app.use(
 //   express.urlencoded({
@@ -149,6 +161,10 @@ app.use(
     ],
   }),
 );
+
+//CORS MIDDLEWARE
+app.use(cors());
+app.options('*', cors());
 
 // CREATING OUR OWN MIDDLEWARE
 // When making our own middleware, we have to call in the next function parameter otherwise the program will stop running and once a response is sent back, that is if a middleware is between a route, it and that route is called upon, the middleware will not get run because a response has ended the program
