@@ -91,6 +91,7 @@ app.use(
         'ws://127.0.0.1:57061/',
         'ws://127.0.0.1:62209/', // <-- Add your dev WebSocket port
         'ws://127.0.0.1:*', // <-- Or use wildcard for all ports (dev only)
+        'wss://natours-app-d2rj.onrender.com:62816/',
       ],
       upgradeInsecureRequests: [],
     },
