@@ -12691,23 +12691,24 @@ var login = exports.login = /*#__PURE__*/function () {
           });
         case 3:
           res = _context.sent;
+          console.log(res);
           if (res.data.status === 'success') {
             (0, _alert.showAlert)('success', 'Logged in Successfuly');
             window.setTimeout(function () {
               location.assign('/');
             }, 1500);
           }
-          _context.next = 10;
+          _context.next = 11;
           break;
-        case 7:
-          _context.prev = 7;
+        case 8:
+          _context.prev = 8;
           _context.t0 = _context["catch"](0);
           (0, _alert.showAlert)('error', _context.t0.response.data.message);
-        case 10:
+        case 11:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[0, 8]]);
   }));
   return function login(_x, _x2) {
     return _ref.apply(this, arguments);
@@ -12727,18 +12728,24 @@ var logout = exports.logout = /*#__PURE__*/function () {
           });
         case 3:
           res = _context2.sent;
-          if (res.data.status === 'success') location.reload(true); //true forces a reload from the server not from the cache
-          _context2.next = 10;
+          console.log(res);
+          if (res.statusText === 'OK') {
+            (0, _alert.showAlert)('success', 'Logged out Successfuly');
+            window.setTimeout(function () {
+              location.assign('/');
+            }, 1500);
+          } // Redirect to home page
+          _context2.next = 11;
           break;
-        case 7:
-          _context2.prev = 7;
+        case 8:
+          _context2.prev = 8;
           _context2.t0 = _context2["catch"](0);
           (0, _alert.showAlert)('error', 'Error logging out! Try Again');
-        case 10:
+        case 11:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 7]]);
+    }, _callee2, null, [[0, 8]]);
   }));
   return function logout() {
     return _ref2.apply(this, arguments);
@@ -13086,7 +13093,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53805" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58245" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

@@ -13,6 +13,7 @@ export const login = async (email, password) => {
       },
     });
 
+    console.log(res);
     if (res.data.status === 'success') {
       showAlert('success', 'Logged in Successfuly');
       window.setTimeout(() => {
@@ -30,7 +31,14 @@ export const logout = async () => {
       method: 'GET',
       url: 'http://127.0.0.1:3000/api/v1/users/logout',
     });
-    if (res.data.status === 'success') location.reload(true); //true forces a reload from the server not from the cache
+
+    console.log(res);
+    if (res.statusText === 'OK') {
+      showAlert('success', 'Logged out Successfuly');
+      window.setTimeout(() => {
+        location.assign('/');
+      }, 1500);
+    } // Redirect to home page
   } catch (err) {
     showAlert('error', 'Error logging out! Try Again');
   }

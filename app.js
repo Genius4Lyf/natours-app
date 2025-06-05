@@ -162,6 +162,7 @@ app.use(
 // USING MIDDLEWARE TO SPOT THE TIME THE REQUEST HAPPENED
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
+  console.log(`App starts running at about ${req.requestTime}`);
   // console.log(req.cookies);//logging the cookies to the console
   next();
 });

@@ -202,7 +202,9 @@ tourSchema.pre(/^find/, function (next) {
 });
 
 tourSchema.post(/^find/, function (docs, next) {
-  console.log(`Query took ${Date.now() - this.start} miliseconds`);
+  console.log(
+    `Query took ${Date.now() - this.start} miliseconds. Tour Model loaded Successfully`,
+  );
   // console.log(docs) commented out so as not to flood console
   next();
 }); //This middleware will run after the query is executed and therefore it can have access to the document that was retured
